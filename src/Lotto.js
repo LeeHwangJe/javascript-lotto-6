@@ -1,18 +1,8 @@
-class Lotto {
-  #numbers;
+import { NUMBER } from "../utils/Constant.js";
 
-  constructor(numbers) {
-    this.#validate(numbers);
-    this.#numbers = numbers;
-  }
-
-  #validate(numbers) {
-    if (numbers.length !== 6) {
-      throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
-    }
-  }
-
-  // TODO: 추가 기능 구현
-}
-
-export default Lotto;
+const ERROR = {
+  LIMIT_LOTTO_NUMBERS: `[ERROR] 로또 번호는 ${NUMBER.TOTAL_LOTTO_NUMBER}개여야 합니다.`,
+  STRING_IN_LOTTO_NUMBERS: "[ERROR] 로또 번호에 문자가 있습니다.",
+  AREA_OVER_LOTTO_NUMBERS: `[ERROR] 로또 번호는 ${NUMBER.MIN_LOTTO_NUMBER}부터 ${NUMBER.MAX_LOTTO_NUMBER}사이의 숫자여야 합니다.`,
+  SAME_NUMBER_IN_LOTTO_NUMBERS: `[ERROR] 로또 번호에 중복된 숫자가 있습니다.`,
+};
