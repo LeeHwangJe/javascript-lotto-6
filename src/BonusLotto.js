@@ -30,4 +30,15 @@ class BonusLotto {
       throw new Error(ERROR.BONUS_NUMBER_IN_LOTTO_NUMBERS);
     }
   }
+  getLottoMatchBonusCount(lottoNumbersList) {
+    const lottoMathBonusCountList = [];
+    lottoNumbersList.forEach((lotttoNumbers) => {
+      lottoMathBonusCountList.push(
+        lotttoNumbers.includes(Number(this.#number))
+      );
+    });
+    return lottoMathBonusCountList;
+  }
 }
+
+export default BonusLotto;
