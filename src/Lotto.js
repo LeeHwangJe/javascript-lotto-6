@@ -26,3 +26,16 @@ class Lotto {
       throw new Error(ERROR.SAME_NUMBER_IN_LOTTO_NUMBERS);
     };
   }
+
+  findStringInNumbers(numbers) {
+    return numbers.some(item => isNaN(item));
+  }
+  
+  findOverNumbers(numbers) {
+    return numbers.some(item => item < NUMBER.MIN_LOTTO_NUMBER || item > NUMBER.MAX_LOTTO_NUMBER);
+  }
+
+  findDuplicationInNumbers(numbers) {
+    const duplication_numbers = new Set(numbers);
+    return duplication_numbers.size !== numbers.length;
+  }
