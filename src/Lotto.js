@@ -6,3 +6,23 @@ const ERROR = {
   AREA_OVER_LOTTO_NUMBERS: `[ERROR] 로또 번호는 ${NUMBER.MIN_LOTTO_NUMBER}부터 ${NUMBER.MAX_LOTTO_NUMBER}사이의 숫자여야 합니다.`,
   SAME_NUMBER_IN_LOTTO_NUMBERS: `[ERROR] 로또 번호에 중복된 숫자가 있습니다.`,
 };
+
+class Lotto {
+  #numbers;
+
+  constructor(numbers) {
+    this.#validate(numbers);
+    this.#numbers = numbers;
+  }
+
+  #validate(numbers) {
+    if (numbers.length !== NUMBER.TOTAL_LOTTO_NUMBER) {
+      throw new Error(ERROR.LIMIT_LOTTO_NUMBERS);
+    } else if (this.findStringInNumbers(numbers)) {
+      throw new Error(ERROR.STRING_IN_LOTTO_NUMBERS);
+    } else if (this.findOverNumbers(numbers)) {
+      throw new Error(ERROR.AREA_OVER_LOTTO_NUMBERS);
+    } else if (this.findDuplicationInNumbers(numbers)) {
+      throw new Error(ERROR.SAME_NUMBER_IN_LOTTO_NUMBERS);
+    };
+  }
